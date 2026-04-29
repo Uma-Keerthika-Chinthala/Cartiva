@@ -1,0 +1,70 @@
+<div class="container mt-3">
+  <app-header></app-header>
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="text-center mt-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Fetching product details...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (hasError()) {
+    <div class="alert alert-danger mt-3">
+      ❌ {{ error() }}
+    </div>
+  }
+
+  <!-- Product Details -->
+  @if (hasProduct()) {
+    <div class="row">
+      <h1 class="text-center product-item-details-header">Product Item Details</h1>
+      <!-- Left: Product Image -->
+      <div class="col-md-5 text-center">
+        <img
+          [src]="product()!.image"
+          [alt]="product()!.title"
+          class="img-fluid p-4"
+          style="max-height: 400px; object-fit: contain;"
+        />
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="col-md-7">
+        <h3 class="fw-bold">{{ product()!.title }}</h3>
+
+        <span class="badge bg-secondary mb-3">
+          {{ product()!.category | titlecase }}
+        </span>
+
+        <h4 class="text-primary fw-bold mt-2">
+          ${{ product()!.price }}
+        </h4>
+
+        <p class="text-muted mt-3">
+          {{ product()!.description }}
+        </p>
+
+        <p class="text-warning">
+          ⭐ {{ product()!.rating.rate }} 
+          <span class="text-muted small">
+            ({{ product()!.rating.count }} reviews)
+          </span>
+        </p>
+
+        <div class="d-flex gap-3 mt-4">
+          <button class="btn btn-primary px-4">
+            🛒 Add to Cart
+          </button>
+          <button class="btn btn-outline-secondary px-4">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+
+    </div>
+  }
+
+</div>
