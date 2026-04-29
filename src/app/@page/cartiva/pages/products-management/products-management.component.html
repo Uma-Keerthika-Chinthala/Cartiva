@@ -1,0 +1,153 @@
+<div>
+    <app-header></app-header>
+    <div class="container mt-4">
+  <h4 class="fw-bold mb-4">🛠️ Product Management</h4>
+
+  <!-- ─── Form Section ─────────────────────────────── -->
+  <div class="card shadow-sm p-4 mb-5">
+    <h5 class="fw-bold mb-3">Add / Update Product</h5>
+    <form>
+
+      <div class="row g-3">
+
+        <!-- ID -->
+        <div class="col-md-6">
+          <label for="id" class="form-label">Product ID</label>
+          <input
+            type="number"
+            id="id"
+            class="form-control"
+            placeholder="Enter product ID"
+          />
+        </div>
+
+        <!-- Title -->
+        <div class="col-md-6">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            id="title"
+            class="form-control"
+            placeholder="Enter product title"
+          />
+        </div>
+
+        <!-- Price -->
+        <div class="col-md-6">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            id="price"
+            class="form-control"
+            placeholder="Enter price (e.g. 0.1)"
+            step="0.1"
+          />
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-6">
+          <label for="category" class="form-label">Category</label>
+          <input
+            type="text"
+            id="category"
+            class="form-control"
+            placeholder="Enter category"
+          />
+        </div>
+
+        <!-- Image URL -->
+        <div class="col-md-6">
+          <label for="image" class="form-label">Image URL</label>
+          <input
+            type="url"
+            id="image"
+            class="form-control"
+            placeholder="http://example.com/image.jpg"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="col-md-6">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            id="description"
+            class="form-control"
+            rows="3"
+            placeholder="Enter product description"
+          ></textarea>
+        </div>
+
+      </div>
+
+      <!-- Form Buttons -->
+      <div class="d-flex gap-3 mt-4">
+        <button type="submit" class="btn btn-primary px-4">
+          ➕ Add Product
+        </button>
+        <button type="button" class="btn btn-warning px-4">
+          ✏️ Update Product
+        </button>
+        <button type="reset" class="btn btn-outline-secondary px-4">
+          🔄 Reset
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- ─── Table Section ────────────────────────────── -->
+  <div class="card shadow-sm p-4">
+    <h5 class="fw-bold mb-3">📋 Products List</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+
+        <thead class="table-dark">
+          <tr>
+            <th>#ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>
+              <img
+                src="https://fakestoreapi.com/img/81fAn1nwfzL._AC_UY879_.jpg"
+                alt="product"
+                style="width: 50px; height: 50px; object-fit: contain;"
+              />
+            </td>
+            <td>Sample Product Title</td>
+            <td>$29.99</td>
+            <td>Electronics</td>
+            <td class="text-truncate" style="max-width: 200px;">
+              Sample product description goes here...
+            </td>
+
+            <!-- ─── Action Buttons ───────────────── -->
+            <td>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-warning">
+                  ✏️ Edit
+                </button>
+                <button class="btn btn-sm btn-danger">
+                  🗑️ Delete
+                </button>
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>

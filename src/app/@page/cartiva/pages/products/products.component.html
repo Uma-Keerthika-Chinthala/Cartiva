@@ -1,1 +1,42 @@
-<p>products works!</p>
+<ng-container>
+    <app-header></app-header>
+    <div class="container mt-4">
+        <!-- Total Count Badge -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold">All Products</h5>
+            <span class="badge bg-primary">
+            {{ totalCount() }} Products   <!-- ✅ Computed signal -->
+            </span>
+        </div>
+
+        @if(loading()){
+            <div class="text-center mt-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">Fetching products...</p>
+            </div>
+        }
+
+         <!-- ✅ Computed signal -->
+        @if (hasError()) {               
+            <div class="alert alert-danger mt-3">
+            ❌ {{ error() }}
+            </div>
+        }
+
+        <!-- Products Grid -->
+        @if (hasProducts()) {
+             <app-product-item [productsList]="products()"></app-product-item>
+        } 
+
+        <!-- ✅ Computed signal -->
+        @if (isEmpty()) {                 
+            <div class="text-center mt-5">
+                <p class="text-muted">No products found.</p>
+            </div>
+        }
+
+    </div>
+</ng-container>
+

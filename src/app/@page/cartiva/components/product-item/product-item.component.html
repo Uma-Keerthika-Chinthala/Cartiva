@@ -1,0 +1,30 @@
+<ul class="row row-cols-1 row-cols-md-3 g-4 list-unstyled">
+            @for (product of productsList; track product.id) {
+               
+            <li class="col">
+                 <a [routerLink]="['/product', product.id]" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm">
+                <img
+                    [src]="product.image"
+                    [alt]="product.title"
+                    class="card-img-top p-3"
+                    style="height: 200px; object-fit: contain;"
+                />
+                <div class="card-body">
+                    <h6 class="card-title">{{ product.title }}</h6>
+                    <p class="text-muted small">{{ product.category | titlecase }}</p>
+                    <p class="fw-bold text-primary">${{ product.price }}</p>
+                    <p class="text-warning small">
+                    ⭐ {{ product.rating.rate }} ({{ product.rating.count }} reviews)
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary w-100">Add to Cart</button>
+                </div>
+               
+                </div>
+             </a>
+            </li>
+           
+            }
+        </ul>
