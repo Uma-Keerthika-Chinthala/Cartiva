@@ -1,15 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductModel } from '../state/product.model';
+import { ProductModel, AddProductModel } from '../state/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductserviceService {
 
-  private readonly baseUrl = 'https://fakestoreapi.com/products';
   private http = inject(HttpClient)
+  private readonly baseUrl = 'https://fakestoreapi.com/products';
+  private addProductUrl = 'https://fakestoreapi.com/products';
+  
 
   getAllProducts(): Observable<ProductModel[]> {
     return this.http.get<ProductModel[]>(this.baseUrl);
@@ -18,4 +20,12 @@ export class ProductserviceService {
   getProductById(id: number): Observable<ProductModel> {
     return this.http.get<ProductModel>(`${this.baseUrl}/${id}`);
   }
+
+  addProduct(product: AddProductModel): Observable<AddProductModel> {
+    return this.http.post<AddProductModel>(this.addProductUrl, product);
+  }
+
+  
+
+
 }

@@ -67,7 +67,10 @@
 /* ─── Nav Link Item ─────────────────────────── */
 
 /* ─── Nav Link Item ─────────────────────────── */
-
+.navbar{
+  background-color: whitesmoke !important;
+  padding: 6px !important;
+}
 .nav-link-item {
   position: relative;
   display: flex;
