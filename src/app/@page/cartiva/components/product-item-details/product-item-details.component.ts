@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { ProductModel } from '@store/products/state/product.model';
 import { ProductsState } from '@store/products/state/product.state';
 import { GetProductById } from '@store/products/state/product.action';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-product-item-details',
@@ -76,6 +77,10 @@ private selectProduct(id: number): void {
       }
     });
 }
+
+  goBack(): void {
+    window.history.back();
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();

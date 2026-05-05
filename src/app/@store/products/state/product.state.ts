@@ -3,9 +3,10 @@ import {State, Action, StateContext, Selector} from '@ngxs/store';
 import {tap, catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs'; 
 
-import { ProductModel, ProductStateModel } from './product.model';
-import { GetAllProducts, GetProductById } from './product.action';
+import { ProductModel, ProductStateModel, AddProductModel} from './product.model';
+import { AddProduct, GetAllProducts, GetProductById } from './product.action';
 import { ProductserviceService } from '../service/productservice.service';
+import { error } from 'console';
 
 @State<ProductStateModel>({
     name: 'products',
@@ -18,12 +19,7 @@ import { ProductserviceService } from '../service/productservice.service';
 @Injectable()
 export class ProductsState {
     private productService = inject(ProductserviceService);
-
-    @Selector()
-    static getAllProducts(state:ProductStateModel): ProductModel[] {
-        return state.products;
-    }
-
+    
     @Selector()
     static isLoading(state: ProductStateModel): boolean {
         return state.loading;
@@ -33,6 +29,12 @@ export class ProductsState {
     static getError(state: ProductStateModel): string | null {
         return state.error;
     }
+
+    // Get all products 
+    @Selector()
+    static getAllProducts(state:ProductStateModel): ProductModel[] {
+        return state.products;
+    } 
 
     @Action(GetAllProducts)
     getAllProducts(ctx:StateContext<ProductStateModel>){
@@ -57,7 +59,7 @@ export class ProductsState {
         )
     }
 
-    
+    // Get product by id
     @Action(GetProductById)
     getProductById(ctx:StateContext<ProductStateModel>, action: GetProductById){
         ctx.patchState({
@@ -77,20 +79,7 @@ export class ProductsState {
                 return throwError(() => error);
             })
 
-    )}
-
-
-
-
-
-
-
-
-
-
-
-
-
+    )} 
 
 } 
 

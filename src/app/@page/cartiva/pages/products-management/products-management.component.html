@@ -1,153 +1,183 @@
 <div>
-    <app-header></app-header>
-    <div class="container mt-4">
-  <h4 class="fw-bold mb-4">🛠️ Product Management</h4>
+  <app-header></app-header>
+  <div class="container mt-4">
+    <h4 class="fw-bold mb-4">🛠️ Product Management</h4>
 
-  <!-- ─── Form Section ─────────────────────────────── -->
-  <div class="card shadow-sm p-4 mb-5">
-    <h5 class="fw-bold mb-3">Add / Update Product</h5>
-    <form>
+    <!-- ─── Form Section ─────────────────────────────── -->
+    <div class="card shadow-sm p-4 mb-5">
+      <h5 class="fw-bold mb-3">Add / Update Product</h5>
+      
+    <form [formGroup]="productsForm" (ngSubmit)="addProduct()">
 
-      <div class="row g-3">
+  <div class="row g-3">
+    <!-- ID -->
+    <div class="col-md-6">
+      <label for="id" class="form-label">Product ID</label>
+      <input
+        type="number"
+        id="id"
+        class="form-control"
+        placeholder="Enter product ID"
+        formControlName="id"
+      />
+    </div>
 
-        <!-- ID -->
-        <div class="col-md-6">
-          <label for="id" class="form-label">Product ID</label>
-          <input
-            type="number"
-            id="id"
-            class="form-control"
-            placeholder="Enter product ID"
-          />
-        </div>
+    <!-- Title -->
+    <div class="col-md-6">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        placeholder="Enter product title"
+        formControlName="title"
+      />
+    </div>
 
-        <!-- Title -->
-        <div class="col-md-6">
-          <label for="title" class="form-label">Title</label>
-          <input
-            type="text"
-            id="title"
-            class="form-control"
-            placeholder="Enter product title"
-          />
-        </div>
+    <!-- Price -->
+    <div class="col-md-6">
+      <label for="price" class="form-label">Price</label>
+      <input
+        type="number"
+        id="price"
+        class="form-control"
+        placeholder="Enter price"
+        formControlName="price"
+      />
+    </div>
 
-        <!-- Price -->
-        <div class="col-md-6">
-          <label for="price" class="form-label">Price</label>
-          <input
-            type="number"
-            id="price"
-            class="form-control"
-            placeholder="Enter price (e.g. 0.1)"
-            step="0.1"
-          />
-        </div>
+    <!-- Category -->
+    <div class="col-md-6">
+      <label for="category" class="form-label">Category</label>
+      <input
+        type="text"
+        id="category"
+        class="form-control"
+        placeholder="Enter category"
+        formControlName="category"
+      />
+    </div>
 
-        <!-- Category -->
-        <div class="col-md-6">
-          <label for="category" class="form-label">Category</label>
-          <input
-            type="text"
-            id="category"
-            class="form-control"
-            placeholder="Enter category"
-          />
-        </div>
+    <!-- Image URL -->
+    <div class="col-md-6">
+      <label for="image" class="form-label">Image URL</label>
+      <input
+        type="url"
+        id="image"
+        class="form-control"
+        placeholder="http://example.com/image.jpg"
+        formControlName="image"
+      />
+    </div>
 
-        <!-- Image URL -->
-        <div class="col-md-6">
-          <label for="image" class="form-label">Image URL</label>
-          <input
-            type="url"
-            id="image"
-            class="form-control"
-            placeholder="http://example.com/image.jpg"
-          />
-        </div>
+    <!-- Description -->
+    <div class="col-md-6">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        rows="3"
+        placeholder="Enter product description"
+        formControlName="description"
+      ></textarea>
+    </div>
 
-        <!-- Description -->
-        <div class="col-md-6">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            id="description"
-            class="form-control"
-            rows="3"
-            placeholder="Enter product description"
-          ></textarea>
-        </div>
-
-      </div>
-
-      <!-- Form Buttons -->
-      <div class="d-flex gap-3 mt-4">
-        <button type="submit" class="btn btn-primary px-4">
-          ➕ Add Product
-        </button>
-        <button type="button" class="btn btn-warning px-4">
-          ✏️ Update Product
-        </button>
-        <button type="reset" class="btn btn-outline-secondary px-4">
-          🔄 Reset
-        </button>
-      </div>
-
-    </form>
   </div>
 
-  <!-- ─── Table Section ────────────────────────────── -->
-  <div class="card shadow-sm p-4">
-    <h5 class="fw-bold mb-3">📋 Products List</h5>
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover align-middle">
+  <!-- Buttons -->
+  <div class="d-flex gap-3 mt-4">
+    <button type="submit" class="btn btn-primary px-4">
+      ➕ Add Product
+    </button>
 
-        <thead class="table-dark">
-          <tr>
-            <th>#ID</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+    <button type="button" class="btn btn-warning px-4" (click)="updateProduct()">
+      ✏️ Update Product
+    </button>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              <img
-                src="https://fakestoreapi.com/img/81fAn1nwfzL._AC_UY879_.jpg"
-                alt="product"
-                style="width: 50px; height: 50px; object-fit: contain;"
-              />
-            </td>
-            <td>Sample Product Title</td>
-            <td>$29.99</td>
-            <td>Electronics</td>
-            <td class="text-truncate" style="max-width: 200px;">
-              Sample product description goes here...
-            </td>
+    <button type="reset" class="btn btn-outline-secondary px-4" (click)="resetForm()">
+      🔄 Reset
+    </button>
+  </div>
 
-            <!-- ─── Action Buttons ───────────────── -->
-            <td>
-              <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-warning">
-                  ✏️ Edit
-                </button>
-                <button class="btn btn-sm btn-danger">
-                  🗑️ Delete
-                </button>
-              </div>
-            </td>
+</form>
 
-          </tr>
-        </tbody>
+    </div>
 
-      </table>
+    <!-- ─── Table Section ────────────────────────────── -->
+    <div class="card shadow-sm p-4">
+      <h5 class="fw-bold mb-3">📋 Products List</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+
+          <thead class="table-dark">
+            <tr>
+              <th>#ID</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <!-- ─── Loading ──────────────────────── -->
+            @if (loading()) {
+            <tr>
+              <td colspan="7" class="text-center py-4">
+                <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                <span class="ms-2 text-muted">Loading products...</span>
+              </td>
+            </tr>
+            }
+
+            <!-- ─── Products List ────────────────── -->
+            @if (!loading()) {
+            @for (product of productsList(); track product.id) {
+            <tr>
+              <td>{{ product.id }}</td>
+              <td>
+                <img [src]="product.image" [alt]="product.title"
+                  style="width: 50px; height: 50px; object-fit: contain;" />
+              </td>
+              <td>{{ product.title }}</td>
+              <td class="fw-bold text-primary">${{ product.price }}</td>
+              <td>{{ product.category | titlecase }}</td>
+              <td class="text-truncate" style="max-width: 200px;">
+                {{ product.description }}
+              </td>
+
+              <!-- ─── Action Buttons ─────────── -->
+              <td>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-warning" (click)="editProduct(product.id)">
+                    ✏️ Edit
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">
+                    🗑️ Delete
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+            }
+
+            <!-- ─── Empty State ────────────────── -->
+            @if (productsList().length === 0) {
+            <tr>
+              <td colspan="7" class="text-center py-4 text-muted">
+                No products found.
+              </td>
+            </tr>
+            }
+            }
+
+          </tbody>
+
+        </table>
+      </div>
     </div>
   </div>
-
-</div>
 </div>
