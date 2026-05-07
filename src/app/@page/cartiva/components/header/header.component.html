@@ -58,7 +58,7 @@
       <li><a routerLink="/productmanagement" routerLinkActive="nav-active" class="nav-link-item">🛠️ Manage</a></li>
       <li>
         <a routerLink="/cart" routerLinkActive="nav-active" class="nav-link-item">
-          🛒 Cart <span class="cart-badge">3</span>
+          🛒 Cart <span class="cart-badge">{{totalItems()}}</span>
         </a>
       </li>
     </ul>
@@ -103,7 +103,7 @@
         <li>
           <a routerLink="/cart" routerLinkActive="nav-active"
              class="mobile-nav-link" (click)="toggleMenu()">
-            🛒 Cart <span class="cart-badge">3</span>
+            🛒 Cart <span class="cart-badge">{{totalItems()}}</span>
           </a>
         </li>
       </ul>
