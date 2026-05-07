@@ -6,13 +6,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideStore } from '@ngxs/store';
 import { ProductsState } from '@store/products/state/product.state';
 import { ProductsManageState } from './@page/cartiva/pages/store/state/productmanage.state';
-
+import { CartState } from '@store/cart/state/cart.state';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withFetch()),
-    provideStore([ProductsState, ProductsManageState])
+    provideStore([ProductsState, ProductsManageState, CartState]),
   ]
 };

@@ -9,6 +9,8 @@ import { ProductModel } from '@store/products/state/product.model';
 import { ProductsState } from '@store/products/state/product.state';
 import { GetProductById } from '@store/products/state/product.action';
 import { Router } from 'express';
+import { CartItemModel } from '@store/cart/state/cart.mode,';
+import { AddToCart } from '@store/cart/state/cart.action';
 
 @Component({
   selector: 'app-product-item-details',
@@ -80,6 +82,20 @@ private selectProduct(id: number): void {
 
   goBack(): void {
     window.history.back();
+  }
+
+  
+
+  addToCart(product: ProductModel): void {
+    const cartItem: CartItemModel = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    };
+
+    this.store.dispatch(new AddToCart(cartItem));
   }
 
   ngOnDestroy(): void {

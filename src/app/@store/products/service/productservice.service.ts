@@ -25,7 +25,4 @@ export class ProductserviceService {
     return this.http.post<AddProductModel>(this.addProductUrl, product);
   }
 
-  
-
-
 }

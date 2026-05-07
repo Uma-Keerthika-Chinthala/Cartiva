@@ -34,12 +34,6 @@ export class ProductsManagementComponent {
   productsList = signal<ProductModel[]>([]);
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
-  // categoryList = signal<string[]>([
-  //   "Men's Clothing",
-  //   "Jewelery",
-  //   "Electronics",
-  //   "Woman's Clothing"
-  // ]);
 
   successMessage = signal<string | null>(null);
   errorMessage = signal<string | null>(null);
